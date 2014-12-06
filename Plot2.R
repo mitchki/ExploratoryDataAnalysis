@@ -28,11 +28,12 @@ pow <- power[use,]
 dtime <- strptime(paste(pow$Date," ",pow$Time),format="%d/%m/%Y %H:%M:%S")
 pow <- cbind(pow,dtime)
 
-## Plot1
+## Plot2
 dev.set(2)
 par(mfrow=1)
-hist(pow$Global_active_power, xlab="Global Active Power (kilowatts)",
-        col="red", main="Global Active Power")
-dev.copy(png,file="plot1.png", width=480, height=480)
+with(pow,plot(dtime,Global_active_power, type="l",
+        xlab="",ylab="Global Active Power (kilowatts)"))
+dev.copy(png,file="plot2.png", width=480, height=480)
 dev.off()
+
 
